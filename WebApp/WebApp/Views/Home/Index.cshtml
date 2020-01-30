@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>Venda De Produto</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="ttxtCodigo">Codigo</label>
+                <input type="text" id="txtCodigo" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label for="txtDescricao">Descrição</label>
+                <input type="text" id="txtDescricao" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label for="txtValor">Valor</label>
+                <input type="number" id="txtValor" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="txtVlrEntrada">Valor Entrada</label>
+                <input type="number" id="txtVlrEntrada" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label for="qtdParcelas">Qtd. Parcelas</label>
+                <input type="number" id="qtdParcelas" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <input type="button" id="btnEnviarFormulario" value="Enviar" onclick="EnviaFormulario()" />
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<script>
+    function EnviaFormulario() {
+        $.ajax({
+            type: "GET",
+            url: "/Home/DadosProduto",
+            data: { Codigo: "abc", Nome: "QBD", Valor: 122, ValorEntrada: "999", QtdParcelas : "6" },
+            dataType: "json",
+            contentType: "application / json; charset = utf-8",
+            success: function () {
+                // alert ("Os dados foram adicionados com sucesso.");
+                alert("ok");
+            },
+            error: function () {
+                alerta("Erro ao inserir dados");
+            }
+        });
+    }
+</script>
